@@ -1,0 +1,29 @@
+.Container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1f1f1;
+}
+
+.CitiesContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+  margin-top: 50px;
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.CitiesForcastContainer {
+  width: 100%;
+  padding: 0 10%;
+}

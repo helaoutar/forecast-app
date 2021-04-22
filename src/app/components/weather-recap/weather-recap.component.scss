@@ -1,0 +1,46 @@
+.WeatherRecap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 17px 20px;
+  background: white;
+}
+
+.WeatherRecap__details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.WeatherRecap__city-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.WeatherRecap__city-temperature {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.WeatherRecap__city-description {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.WeatherRecap__city-wind {
+  font-size: 13px;
+}
+
+.WeatherRecap__icon {
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: scale 0.2s;
+
+  &:hover {
+    scale: 1.2;
+  }
+}

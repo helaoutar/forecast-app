@@ -1,0 +1,22 @@
+<div *ngIf="weather" class="WeatherRecap">
+  <img
+    alt=""
+    class="WeatherRecap__icon"
+    height="100"
+    width="100"
+    [src]="getIcon()"
+    (click)="clicked.emit(weather.city)"
+  />
+  <div class="WeatherRecap__details">
+    <span class="WeatherRecap__city-name">{{ weather.city }}</span>
+    <span class="WeatherRecap__city-temperature">{{
+      weather.current?.temp | celcius
+    }}</span>
+    <span class="WeatherRecap__city-description">{{
+      weather.current.weather[0]?.description
+    }}</span>
+    <span class="WeatherRecap__city-wind"
+      >Wind: {{ weather.current?.wind_speed }}</span
+    >
+  </div>
+</div>

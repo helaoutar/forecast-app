@@ -1,0 +1,31 @@
+<div *ngIf="weather" class="WeatherForecast">
+  <h2 style="text-align: center">
+    {{ weather.city }} forecast for the next 48 hours
+  </h2>
+  <div class="WeatherForecast__container">
+    <div
+      class="WeatherForecast__details"
+      *ngFor="let forecast of weather.hourly; index as i"
+    >
+      <div class="WeatherForecast__time">
+        <strong>{{ getTime(i, weather.timezone) }}</strong>
+        <span>{{ getDay(i, weather.timezone) }}</span>
+      </div>
+      <div>
+        <img
+          [src]="getIcon(forecast.weather[0]?.icon)"
+          width="50"
+          height="50"
+          alt=""
+        />
+      </div>
+      <div class="WeatherForecast__temp">{{ forecast.temp | celcius }}</div>
+      <div class="WeatherForecast__description">
+        {{ forecast.weather[0]?.description }}
+      </div>
+      <div class="WeatherForecast__wind">
+        {{ forecast.wind_speed | windSpeed }}
+      </div>
+    </div>
+  </div>
+</div>
