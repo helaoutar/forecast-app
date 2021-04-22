@@ -1,16 +1,42 @@
-import { TestBed, async } from "@angular/core/testing";
+import { DebugElement } from "@angular/core";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
+import { WeatherService } from "./services/weather/weather.service";
+
+const weatherServiceStub = {
+  getCitiesWeather: () => Promise.resolve([]),
+};
 
 describe("AppComponent", () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [AppComponent],
-    }).compileComponents();
-  }));
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let de: DebugElement;
+  let weatherService: WeatherService;
+
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [AppComponent],
+        providers: [{ provide: WeatherService, useValue: weatherServiceStub }],
+      }).compileComponents();
+    })
+  );
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    de = fixture.debugElement;
+    weatherService = de.injector.get(WeatherService);
+    fixture.detectChanges();
+  });
 
   it("should create the app", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
+  });
+
+  it("should call weatherService.getCitiesWeather when the component is rendered", () => {
+    spyOn(weatherService, "getCitiesWeather").and.callThrough();
+    component.ngOnInit();
+    expect(weatherService.getCitiesWeather).toHaveBeenCalledTimes(1);
   });
 });

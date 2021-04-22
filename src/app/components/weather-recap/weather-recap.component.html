@@ -16,7 +16,7 @@
       weather.current.weather[0]?.description
     }}</span>
     <span class="WeatherRecap__city-wind"
-      >Wind: {{ weather.current?.wind_speed }}</span
+      >Wind: {{ weather.current?.wind_speed | windSpeed }}</span
     >
   </div>
 </div>

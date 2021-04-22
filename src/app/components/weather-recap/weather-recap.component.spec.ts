@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { AppComponent } from "src/app/app.component";
 
 import { WeatherRecapComponent } from "./weather-recap.component";
@@ -7,11 +7,13 @@ describe("WeatherRecapComponent", () => {
   let component: WeatherRecapComponent;
   let fixture: ComponentFixture<WeatherRecapComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [AppComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [AppComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WeatherRecapComponent);

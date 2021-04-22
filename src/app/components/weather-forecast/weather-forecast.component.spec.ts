@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { WeatherForcastComponent } from "./weather-forecast.component";
 
@@ -6,11 +6,13 @@ describe("WeatherForecastComponent", () => {
   let component: WeatherForcastComponent;
   let fixture: ComponentFixture<WeatherForcastComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [WeatherForcastComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [WeatherForcastComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WeatherForcastComponent);
@@ -18,7 +20,7 @@ describe("WeatherForecastComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it("should be created", () => {
     expect(component).toBeTruthy();
   });
 });
