@@ -7,7 +7,8 @@ import { WeatherService } from "./services/weather/weather.service";
 import { WeatherRecapComponent } from "./components/weather-recap/weather-recap.component";
 import { WeatherForcastComponent } from "./components/weather-forecast/weather-forecast.component";
 import { CelciusPipe } from "./pipe/celcius/celcius.pipe";
-import { WindSpeedPipe } from './pipe/wind/wind-speed.pipe';
+import { WindSpeedPipe } from "./pipe/wind/wind-speed.pipe";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,11 @@ import { WindSpeedPipe } from './pipe/wind/wind-speed.pipe';
     CelciusPipe,
     WindSpeedPipe,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule],
+  imports: [
+    NgxSkeletonLoaderModule.forRoot(),
+    BrowserModule,
+    BrowserAnimationsModule,
+  ],
   providers: [WeatherService],
   bootstrap: [AppComponent],
 })

@@ -41,7 +41,7 @@ describe("WeatherService", () => {
     (libs.getRandomCities as any).calls.reset();
   });
 
-  it("should be created", () => {
+  it("should create the component", () => {
     const service: WeatherService = TestBed.inject(WeatherService);
     expect(service).toBeTruthy();
   });

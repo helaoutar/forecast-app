@@ -1,15 +1,29 @@
 <div class="Container">
-  <div class="CitiesContainer">
-    <app-weather-recap
-      *ngFor="let cityWeather of citiesWeather"
-      [cityWeather]="cityWeather"
-      (clicked)="handleClick($event)"
-    ></app-weather-recap>
-  </div>
+  <ngx-skeleton-loader
+    *ngIf="!citiesWeather.length; else elseBlock"
+    count="5"
+    appearance="circle"
+    [theme]="{
+      width: '159px',
+      height: '237px',
+      'border-radius': '10px',
+      'margin-top': '50px'
+    }"
+  >
+  </ngx-skeleton-loader>
+  <ng-template #elseBlock>
+    <div class="CitiesContainer">
+      <app-weather-recap
+        *ngFor="let cityWeather of citiesWeather"
+        [cityWeather]="cityWeather"
+        (clicked)="handleClick($event)"
+      ></app-weather-recap>
+    </div>
 
-  <div class="CitiesForcastContainer">
-    <app-weather-forcast
-      [cityWeather]="selectedCityWeather"
-    ></app-weather-forcast>
-  </div>
+    <div class="CitiesForcastContainer">
+      <app-weather-forcast
+        [cityWeather]="selectedCityWeather"
+      ></app-weather-forcast>
+    </div>
+  </ng-template>
 </div>
